@@ -1,6 +1,6 @@
 import { Category } from "../../model/Category";
-import { CategoriesRepository } from "../../repositories/CategoriesRepository";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
+import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 
 class ListCategoriesUseCase {
 	private categoriesRepository: ICategoriesRepository;
