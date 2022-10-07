@@ -8,7 +8,6 @@ class CreateSpecificationController {
 	constructor(createSpecificationUseCase: CreateSpecificationUseCase) {
 		this.createSpecificationUseCase = createSpecificationUseCase;
 	}
-
 	handle(request: Request, response: Response): Response {
 		const { name, description } = request.body;
 
