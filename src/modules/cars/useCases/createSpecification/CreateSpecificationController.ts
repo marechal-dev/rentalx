@@ -2,13 +2,19 @@ import { Request, Response } from "express";
 
 import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 
-class CreateSpecificationController {
-	private createSpecificationUseCase: CreateSpecificationUseCase;
+interface ICreateSpecficationRequestBody {
+	name: string;
+	description: string;
+}
 
-	constructor(createSpecificationUseCase: CreateSpecificationUseCase) {
-		this.createSpecificationUseCase = createSpecificationUseCase;
-	}
-	handle(request: Request, response: Response): Response {
+interface ICreateSpecificationRequest extends Request {
+	body: ICreateSpecficationRequestBody;
+}
+
+class CreateSpecificationController {
+	constructor(private createSpecificationUseCase: CreateSpecificationUseCase) {}
+
+	handle(request: ICreateSpecificationRequest, response: Response): Response {
 		const { name, description } = request.body;
 
 		this.createSpecificationUseCase.execute({ name, description });
