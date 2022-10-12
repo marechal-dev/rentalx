@@ -1,4 +1,3 @@
 node_modules
-temp
-tmp
-.env
+.git
+.vscode

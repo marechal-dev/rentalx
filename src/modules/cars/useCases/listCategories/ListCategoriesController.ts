@@ -3,16 +3,12 @@ import { Request, Response } from "express";
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase";
 
 class ListCategoriesController {
-	private listCategoryUseCase: ListCategoriesUseCase;
-
-	constructor(listCategoryUseCase: ListCategoriesUseCase) {
-		this.listCategoryUseCase = listCategoryUseCase;
-	}
+	constructor(private listCategoriesUseCase: ListCategoriesUseCase) {}
 
 	handle(request: Request, response: Response): Response {
-		const allCategories = this.listCategoryUseCase.execute();
+		const allCategories = this.listCategoriesUseCase.execute();
 
-		return response.json(allCategories);
+		return response.status(200).json(allCategories);
 	}
 }
 

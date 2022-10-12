@@ -1,0 +1,83 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "RentalX Documentation",
+    "description": "This is an API for car rental.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "pietro.developer@gmail.com"
+    }
+  },
+  "paths": {
+    "/categories": {
+			"get": {
+				"tags": ["Category"],
+				"summary": "List all Categories",
+				"description": "List all Categories",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"created_at": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+      "post": {
+				"tags": ["Category"],
+        "summary": "Create category",
+        "description": "Create a new category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									}
+								}
+              },
+              "example": {
+                "name": "category name sample",
+                "description": "Category description sample"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Category already exists"
+          }
+        }
+      }
+    }
+  }
+}

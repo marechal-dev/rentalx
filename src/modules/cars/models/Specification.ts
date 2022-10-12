@@ -1,4 +1,4 @@
-import { v4 as generateUUIDv4 } from "uuid";
+import { randomUUID } from "crypto";
 
 class Specification {
 	id?: string;
@@ -8,7 +8,7 @@ class Specification {
 
 	constructor() {
 		if (!this.id) {
-			this.id = generateUUIDv4();
+			this.id = randomUUID();
 		}
 	}
 }
