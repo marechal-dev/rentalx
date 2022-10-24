@@ -1,0 +1,10 @@
+version: "2.10.2"
+
+services:
+  app:
+    build: .
+    container_name: rentalx
+    ports:
+      - 3000:3000
+    volumes:
+     - .:/usr/app
