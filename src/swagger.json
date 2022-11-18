@@ -1,17 +1,19 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "RentalX Documentation",
-    "description": "This is an API for car rental.",
-    "version": "1.0.0",
-    "contact": {
-      "email": "pietro.developer@gmail.com"
-    }
-  },
-  "paths": {
-    "/categories": {
+	"openapi": "3.0.3",
+	"info": {
+		"title": "RentalX Documentation",
+		"description": "This is an API for car rental.",
+		"version": "1.0.0",
+		"contact": {
+			"email": "pietro.developer@gmail.com"
+		}
+	},
+	"paths": {
+		"/categories": {
 			"get": {
-				"tags": ["Category"],
+				"tags": [
+					"Category"
+				],
 				"summary": "List all Categories",
 				"description": "List all Categories",
 				"responses": {
@@ -44,40 +46,113 @@
 					}
 				}
 			},
-      "post": {
-				"tags": ["Category"],
-        "summary": "Create category",
-        "description": "Create a new category",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
+			"post": {
+				"tags": [
+					"Category"
+				],
+				"summary": "Create category",
+				"description": "Create a new category",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/definitions/Category"
+							},
+							"example": {
+								"name": "category name sample",
+								"description": "Category description sample"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"500": {
+						"description": "Category already exists"
+					}
+				}
+			}
+		},
+		"/categories/import": {
+			"post": {
+				"tags": [
+					"Category"
+				],
+				"summary": "Import Categories from File",
+				"description": "Import Categories in bulk via CSV file.",
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
 								"type": "object",
 								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"description": {
-										"type": "string"
+									"categoriesListFile": {
+										"type": "string",
+										"format": "binary"
 									}
 								}
-              },
-              "example": {
-                "name": "category name sample",
-                "description": "Category description sample"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Category already exists"
-          }
-        }
-      }
-    }
-  }
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Created"
+					}
+				}
+			}
+		},
+		"/specifications": {
+			"post": {
+				"tags": [
+					"Specifications"
+				],
+				"summary": "Create Specification",
+				"description": "Create a new Specification.",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/definitions/Specification"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"500": {
+						"description": "Specification already exists."
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Specification": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			}
+		},
+		"Category": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			}
+		}
+	}
 }
