@@ -2,9 +2,9 @@ import "reflect-metadata";
 
 import { DataSource } from "typeorm";
 
-import { User } from "../modules/accounts/entities/User";
-import { Category } from "../modules/cars/entities/Category";
-import { Specification } from "../modules/cars/entities/Specification";
+import { User } from "@Modules/accounts/entities/User";
+import { Category } from "@Modules/cars/entities/Category";
+import { Specification } from "@Modules/cars/entities/Specification";
 
 const AppDataSource = new DataSource({
 	type: "postgres",
